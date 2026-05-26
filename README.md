@@ -493,8 +493,8 @@ and the discriminator becomes incapable of distinguishing real and generated sam
 Clone the repository:
 
 ```bash
-git clone <repo_url>
-cd <repo_name>
+git clone https://github.com/Himanshu7921/DCGAN-PyTorch-Implementation-From-Scratch.git
+cd DCGAN-PyTorch-Implementation-From-Scratch
 ```
 
 Install dependencies:
