@@ -35,46 +35,16 @@ q \Bigg\| \frac{p+q}{2}
 \right)
 $$
 
-Gradient with respect to the generator parameters:
+Gradient with respect to the discriminator parameters:
 
 $$
-\begin{aligned}
-\nabla_{\theta_g}V(G,D)
-&=
--
-\frac{1}{m}
-\sum_{i=1}^{m}
-\frac{
-\nabla_{\theta_g}
-D(G(z^{(i)};\theta_g);\theta_d)
-\cdot
-\nabla_{\theta_g}
-G(z^{(i)};\theta_g)
-}{
-1-D(G(z^{(i)};\theta_g);\theta_d)
-}
-\end{aligned}
+\nabla_{\theta_d}V(G,D) = \frac{1}{m} \sum_{i=1}^{m} \left( \frac{\nabla_{\theta_d}D(x^{(i)};\theta_d)}{D(x^{(i)};\theta_d)} - \frac{\nabla_{\theta_d}D(G(z^{(i)};\theta_g);\theta_d)}{1-D(G(z^{(i)};\theta_g);\theta_d)} \right)
 $$
 
 Gradient with respect to the generator parameters:
 
 $$
-\begin{aligned}
-\nabla_{\theta_g}V(G,D)
-&=
--
-\frac{1}{m}
-\sum_{i=1}^{m}
-\frac{
-\nabla_{\theta_g}
-D(G(z^{(i)};\theta_g);\theta_d)
-\cdot
-\nabla_{\theta_g}
-G(z^{(i)};\theta_g)
-}{
-1-D(G(z^{(i)};\theta_g);\theta_d)
-}
-\end{aligned}
+\nabla_{\theta_g}V(G,D) = - \frac{1}{m} \sum_{i=1}^{m} \frac{\nabla_{\theta_g}D(G(z^{(i)};\theta_g);\theta_d) \cdot \nabla_{\theta_g}G(z^{(i)};\theta_g)}{1-D(G(z^{(i)};\theta_g);\theta_d)}
 $$
 
 <!-- 
