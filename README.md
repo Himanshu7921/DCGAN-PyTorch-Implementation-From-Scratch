@@ -35,29 +35,24 @@ q \Bigg\| \frac{p+q}{2}
 \right)
 $$
 
-Gradient with respect to the discriminator parameters:
+Gradient with respect to the generator parameters:
 
 $$
 \begin{aligned}
-\nabla_{\theta_d}V(G,D)
+\nabla_{\theta_g}V(G,D)
 &=
+-
 \frac{1}{m}
 \sum_{i=1}^{m}
-\Bigg(
 \frac{
-\nabla_{\theta_d}D(x^{(i)};\theta_d)
-}{
-D(x^{(i)};\theta_d)
-}
-\\
-&\quad -
-\frac{
-\nabla_{\theta_d}
+\nabla_{\theta_g}
 D(G(z^{(i)};\theta_g);\theta_d)
+\cdot
+\nabla_{\theta_g}
+G(z^{(i)};\theta_g)
 }{
 1-D(G(z^{(i)};\theta_g);\theta_d)
 }
-\Bigg)
 \end{aligned}
 $$
 
