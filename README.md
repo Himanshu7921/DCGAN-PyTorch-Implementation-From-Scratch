@@ -47,119 +47,6 @@ $$
 \nabla_{\theta_g}V(G,D) = - \frac{1}{m} \sum_{i=1}^{m} \frac{\nabla_{\theta_g}D(G(z^{(i)};\theta_g);\theta_d) \cdot \nabla_{\theta_g}G(z^{(i)};\theta_g)}{1-D(G(z^{(i)};\theta_g);\theta_d)}
 $$
 
-<!-- 
-# Generative Adversarial Nets (GAN)
-
-
-$$
-V(G,D)
-=
-\mathbb{E}_{x \sim p_{\text{data}}(x)}
-[\log D(x)]
-+
-\mathbb{E}_{z \sim p_z(z)}
-[\log(1-D(G(z)))]
-$$
-
-For the optimal discriminator:
-
-$$
-D^*(x)
-=
-\frac{
-p_{\text{data}}(x)
-}{
-p_g(x)+p_{\text{data}}(x)
-}
-$$
-
-If:
-
-$$
-p_g(x)=p_{\text{data}}(x)
-$$
-
-then:
-
-$$
-D^*(x)=\frac{1}{2}
-$$
-
-The GAN minimax game at equilibrium becomes:
-
-$$
-V(D^*,G)
-=
--\log 4
-+
-2JSD(p_{\text{data}}\|p_g)
-$$
-
-Where the Jensen-Shannon divergence is defined as:
-
-
-$$
-JSD(p\|q)
-=
-\frac{1}{2}
-D_{KL}
-\left(
-p
-\;\Bigg\|\;
-\frac{p+q}{2}
-\right)
-+
-\frac{1}{2}
-D_{KL}
-\left(
-q
-\;\Bigg\|\;
-\frac{p+q}{2}
-\right)
-$$
-
-Gradient with respect to the discriminator parameters:
-
-$$
-\nabla_{\theta_d}V(G,D)
-=
-\frac{1}{m}
-\sum_{i=1}^{m}
-\left(
-\frac{
-\nabla_{\theta_d}D(x^{(i)};\theta_d)
-}{
-D(x^{(i)};\theta_d)
-}
--
-\frac{
-\nabla_{\theta_d}
-D(G(z^{(i)};\theta_g);\theta_d)
-}{
-1-D(G(z^{(i)};\theta_g);\theta_d)
-}
-\right)
-$$
-
-Gradient with respect to the generator parameters:
-
-$$
-\nabla_{\theta_g}V(G,D)
-=
--
-\frac{1}{m}
-\sum_{i=1}^{m}
-\frac{
-\nabla_{\theta_g}
-D(G(z^{(i)};\theta_g);\theta_d)
-\cdot
-\nabla_{\theta_g}
-G(z^{(i)};\theta_g)
-}{
-1-D(G(z^{(i)};\theta_g);\theta_d)
-}
-$$ -->
-
 ---
 
 # DCGAN-PyTorch-Implementation-From-Scratch
@@ -261,6 +148,21 @@ Artifacts are still visible in some generations, which is expected under standar
 * Self-attention mechanisms
 
 ---
+## Training Metrics & Convergence Loss
+
+The optimization paths of the non-cooperative game exhibit typical adversarial oscillation dynamics before reaching a relative equilibrium:
+
+| Generator Loss | Discriminator Loss |
+| :---: | :---: |
+| <img src="output/loss_generator.png" width="450"> | <img src="output/loss_discriminator.png" width="450"> |
+
+## Discriminator Prediction Scores
+
+Tracking the prediction outputs $D(x)$ (real image score) and $D(G(z))$ (fake image score) reveals the classic convergence trend toward $D^*(x) = 0.5$ as training progresses:
+
+| Real Scores ($D(x)$) | Fake Scores ($D(G(z))$) |
+| :---: | :---: |
+| <img src="output/score_dx.png" width="450"> | <img src="output/score_dgz.png" width="450"> |
 
 # Architecture Overview
 
