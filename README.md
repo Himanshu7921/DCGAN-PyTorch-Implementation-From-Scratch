@@ -160,7 +160,7 @@ The optimization paths of the non-cooperative game exhibit typical adversarial o
 
 Tracking the prediction outputs $D(x)$ (real image score) and $D(G(z))$ (fake image score) reveals the classic convergence trend toward $D^*(x) = 0.5$ as training progresses:
 
-| Real Scores ($D(x)$) | Fake Scores ($D(G(z))$) |
+| Real Scores $D(x)$ | Fake Scores $D(G(z))$ |
 | :---: | :---: |
 | <img src="output/score_dx.png" width="450"> | <img src="output/score_dgz.png" width="450"> |
 
