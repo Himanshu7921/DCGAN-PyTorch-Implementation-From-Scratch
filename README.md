@@ -38,29 +38,35 @@ $$
 Gradient with respect to the discriminator parameters:
 
 $$
-\nabla_{\theta_d}V(G,D)=
+\begin{aligned}
+\nabla_{\theta_d}V(G,D)
+&=
 \frac{1}{m}
 \sum_{i=1}^{m}
-\left(
+\Bigg(
 \frac{
 \nabla_{\theta_d}D(x^{(i)};\theta_d)
 }{
 D(x^{(i)};\theta_d)
 }
--
+\\
+&\quad -
 \frac{
 \nabla_{\theta_d}
 D(G(z^{(i)};\theta_g);\theta_d)
 }{
 1-D(G(z^{(i)};\theta_g);\theta_d)
 }
-\right)
+\Bigg)
+\end{aligned}
 $$
 
 Gradient with respect to the generator parameters:
 
 $$
-\nabla_{\theta_g}V(G,D)=
+\begin{aligned}
+\nabla_{\theta_g}V(G,D)
+&=
 -
 \frac{1}{m}
 \sum_{i=1}^{m}
@@ -73,6 +79,7 @@ G(z^{(i)};\theta_g)
 }{
 1-D(G(z^{(i)};\theta_g);\theta_d)
 }
+\end{aligned}
 $$
 
 <!-- 
