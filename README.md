@@ -2,9 +2,8 @@
 
 $$
 V(G,D)
-======
-
-\mathbb{E}*{x \sim p*{\text{data}}(x)}
+=
+\mathbb{E}_{x \sim p_{\text{data}}(x)}
 [\log D(x)]
 +
 \mathbb{E}_{z \sim p_z(z)}
@@ -15,8 +14,7 @@ For the optimal discriminator:
 
 $$
 D^*(x)
-======
-
+=
 \frac{
 p_{\text{data}}(x)
 }{
@@ -40,24 +38,22 @@ The GAN minimax game at equilibrium becomes:
 
 $$
 V(G,D^*)
-========
-
+=
 -\log 4
 +
-2JSD(p_{\text{data}}|p_g)
+2JSD(p_{\text{data}} \| p_g)
 $$
 
 Where the Jensen-Shannon divergence is defined as:
 
 $$
-JSD(p|q)
-========
-
+JSD(p \| q)
+=
 \frac{1}{2}
 D_{KL}
 \left(
 p
-;\Bigg|;
+\Bigg\|
 \frac{p+q}{2}
 \right)
 +
@@ -65,7 +61,7 @@ p
 D_{KL}
 \left(
 q
-;\Bigg|;
+\Bigg\|
 \frac{p+q}{2}
 \right)
 $$
@@ -74,8 +70,7 @@ Gradient with respect to the discriminator parameters:
 
 $$
 \nabla_{\theta_d}V(G,D)
-=======================
-
+=
 \frac{1}{m}
 \sum_{i=1}^{m}
 \left(
@@ -85,7 +80,6 @@ $$
 D(x^{(i)};\theta_d)
 }
 -
-
 \frac{
 \nabla_{\theta_d}
 D(G(z^{(i)};\theta_g);\theta_d)
@@ -99,10 +93,8 @@ Gradient with respect to the generator parameters:
 
 $$
 \nabla_{\theta_g}V(G,D)
-=======================
-
-*
-
+=
+-
 \frac{1}{m}
 \sum_{i=1}^{m}
 \frac{
