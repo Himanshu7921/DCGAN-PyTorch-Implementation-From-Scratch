@@ -1,76 +1,44 @@
 # Generative Adversarial Nets (GAN)
 
-$$
-V(G,D)
-=
-\mathbb{E}_{x \sim p_{\text{data}}(x)}
-[\log D(x)]
-+
-\mathbb{E}_{z \sim p_z(z)}
-[\log(1-D(G(z)))]
-$$
+$$ V(G,D)=\mathbb{E}_{x \sim p_{\text{data}}(x)}[\log D(x)] + \mathbb{E}_{z \sim p_z(z)}[\log(1-D(G(z)))] $$
 
 For the optimal discriminator:
 
-$$
-D^*(x)
-=
-\frac{
-p_{\text{data}}(x)
-}{
-p_g(x)+p_{\text{data}}(x)
-}
-$$
+$$ D^*(x)=\frac{p_{\text{data}}(x)}{p_g(x)+p_{\text{data}}(x)} $$
 
 If:
 
-$$
-p_g(x)=p_{\text{data}}(x)
-$$
+$$ p_g(x)=p_{\text{data}}(x) $$
 
 then:
 
-$$
-D^*(x)=\frac{1}{2}
-$$
+$$ D^*(x)=\frac{1}{2} $$
 
 The GAN minimax game at equilibrium becomes:
 
-$$
-V(G,D^*)
-=
--\log 4
-+
-2JSD(p_{\text{data}} \| p_g)
-$$
+$$ V(G,D^*)=-\log 4 + 2JSD(p_{\text{data}} \| p_g) $$
 
 Where the Jensen-Shannon divergence is defined as:
 
 $$
-JSD(p \| q)
-=
+JSD(p \| q)=
 \frac{1}{2}
 D_{KL}
 \left(
-p
-\Bigg\|
-\frac{p+q}{2}
+p \Bigg\| \frac{p+q}{2}
 \right)
 +
 \frac{1}{2}
 D_{KL}
 \left(
-q
-\Bigg\|
-\frac{p+q}{2}
+q \Bigg\| \frac{p+q}{2}
 \right)
 $$
 
 Gradient with respect to the discriminator parameters:
 
 $$
-\nabla_{\theta_d}V(G,D)
-=
+\nabla_{\theta_d}V(G,D)=
 \frac{1}{m}
 \sum_{i=1}^{m}
 \left(
@@ -92,8 +60,7 @@ $$
 Gradient with respect to the generator parameters:
 
 $$
-\nabla_{\theta_g}V(G,D)
-=
+\nabla_{\theta_g}V(G,D)=
 -
 \frac{1}{m}
 \sum_{i=1}^{m}
