@@ -8,7 +8,6 @@ env/
 .ipynb_checkpoints/
 .vscode/
 saved_models/
-output/
 wandb/
 data/
 .DS_Store
