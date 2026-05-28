@@ -60,9 +60,13 @@ Paper:
 
 The project focuses on implementing the complete GAN training pipeline entirely from scratch using PyTorch while following the architectural principles introduced in the original DCGAN paper.
 
-Initially, the work started with a fully connected MLP-GAN implementation to understand adversarial optimization dynamics and generator-discriminator interaction at a lower abstraction level. The implementation was later extended toward convolutional adversarial architectures using DCGAN.
+## Technical Blog
 
-This repository does not attempt to deeply explain GAN fundamentals or adversarial optimization theory. A separate technical blog covering GAN training dynamics, convergence instability, discriminator saturation, vanishing gradients, and mode collapse analysis will be published separately.
+I also documented the complete implementation journey, debugging process, architecture decisions, and GAN training insights here:
+
+[Building DCGAN From Scratch While Reading the Paper](https://medium.com/@himanshusr451tehs/building-dcgan-from-scratch-while-reading-the-paper-2e26b0e64b24)
+
+Initially, the work started with a fully connected MLP-GAN implementation to understand adversarial optimization dynamics and generator-discriminator interaction at a lower abstraction level. The implementation was later extended toward convolutional adversarial architectures using DCGAN.
 
 The repository contains:
 
