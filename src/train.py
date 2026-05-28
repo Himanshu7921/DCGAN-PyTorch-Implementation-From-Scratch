@@ -142,7 +142,7 @@ from config import config
 from utils import weights_init
 from sample import generate_images
 from model import DCGAN
-from utils import get_loader, save_model
+from utils import get_loader, save_model, initialize_wandb
 
 
 def parse_args():
@@ -203,6 +203,12 @@ def parse_args():
     return parser.parse_args()
 
 def train(generator, discriminator, device, loader, d_optimizer, g_optimizer):
+    initialize_wandb(generator = generator,
+                     discriminator = discriminator,
+                     g_optimizer = g_optimizer,
+                     d_optimizer = d_optimizer,
+                     loader = loader
+    )
     LATENT_DIM = config["latent_space_size"]
 
     loss_fn = nn.BCEWithLogitsLoss()

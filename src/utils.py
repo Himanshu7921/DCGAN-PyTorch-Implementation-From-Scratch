@@ -201,3 +201,38 @@ def load_generator(device):
     )
     generator.eval()
     return generator
+
+def initialize_wandb(generator: DCGAN, discriminator: DCGAN, g_optimizer: torch.optim.Adam, d_optimizer: torch.optim.Adam, loader):
+    generator_arch = repr(generator)
+    discriminator_arch = repr(discriminator)
+
+    wandb.init(
+        project="DCGAN-celeba",
+        name=f"run_lr{g_optimizer.param_groups[0]['lr']}",
+        config={
+            "g_lr": g_optimizer.param_groups[0]['lr'],
+            "d_lr": d_optimizer.param_groups[0]['lr'],
+            "epochs": config["epochs"],
+            "batch_size": loader.batch_size,
+            "latent_dims": config["latent_space_size"],
+            "K": config["k"],
+
+            "generator_parameters":
+                sum(p.numel() for p in generator.parameters()),
+
+            "discriminator_parameters":
+                sum(p.numel() for p in discriminator.parameters()),
+
+            "generator_architecture": generator_arch,
+            "discriminator_architecture": discriminator_arch
+        }
+    )
+
+    with open("generator_architecture.txt", "w") as f:
+        f.write(repr(generator))
+
+    with open("discriminator_architecture.txt", "w") as f:
+        f.write(repr(discriminator))
+
+    wandb.save("generator_architecture.txt", policy="now")
+    wandb.save("discriminator_architecture.txt", policy="now")
